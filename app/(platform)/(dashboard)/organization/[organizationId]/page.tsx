@@ -1,9 +1,20 @@
-import { auth } from "@clerk/nextjs/server";
+import { db } from "@/lib/db";
 
-const OrganizationIdPage = () => {
-  const {userId, orgId} = auth()
+import { Board } from "./board";
+import { Form } from "./form";
 
-  return <div>Org page</div>;
+const OrganizationIdPage = async () => {
+  const boards = await db.board.findMany();
+  return (
+    <div className="flex flex-col space-y-4">
+      <Form/>
+      <div className="space-y-2">
+        {boards.map((board) => (
+          <Board key={board.id} id={board.id} title={board.title}/>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default OrganizationIdPage;
