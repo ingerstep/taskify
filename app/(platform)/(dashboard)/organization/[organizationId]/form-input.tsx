@@ -1,3 +1,7 @@
+import { useFormStatus } from "react-dom";
+
+import { Input } from "@/components/ui/input";
+
 interface FormInputProps {
   errors?: {
     title?: string[];
@@ -5,14 +9,16 @@ interface FormInputProps {
 }
 
 export const FormInput = ({ errors }: FormInputProps) => {
+    const {pending} = useFormStatus()
+
   return (
     <>
-      <input
+      <Input
         id="title"
         required
         name="title"
         placeholder="asd"
-        className="border-black border p-1"
+        disabled={pending}
       />
       {errors?.title ? (
         <div>
