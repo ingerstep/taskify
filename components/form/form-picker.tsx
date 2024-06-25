@@ -91,7 +91,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               </div>
             )}
             <Link
-              href={image.links.hrml}
+              href={image.links.html}
               target="_blank"
               className="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-[10px] truncate text-white hover:underline bg-black/50"
             >
